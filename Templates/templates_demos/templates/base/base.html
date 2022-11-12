@@ -1,0 +1,40 @@
+{% load tags %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block page_title %}My Site{% endblock %}</title>
+    {# Wrong way to load 'static files' #}
+{#    <link rel="stylesheet" href="/static/site.css">#}
+    <link rel="stylesheet" href="{% static 'site.css' %}">
+    {# Site CSS #}
+    <style>
+        h1{
+            color:green;
+        }
+    </style>
+    {# Page - specific CSS #}
+    {% block styles %} {% endblock %}
+</head>
+<body>
+HTML Nav:
+<nav>
+    <a href="{% url 'index' %}">Go to Home</a>
+    <a href="{% url 'redirect to home' %}">Redirect to Home</a>
+</nav>
+
+Tag Nav:
+{% app_nav 'index' 'redirect to home' 'about'%}
+
+{# Placeholder for child templates to use #}
+{# page_content is custom name, can be 'content','gosho', you decide #}
+{% block page_content %}
+{% endblock %}
+
+{# 'include' when no python logic needed #}
+{# 'custom_tags' when python logic needed #}
+{% include 'partials/footer.html' %}
+
+</body>
+</html>

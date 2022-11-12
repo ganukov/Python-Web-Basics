@@ -1,0 +1,34 @@
+{% extends 'base/base.html' %}
+{% load filters %} {# the name of the file #}
+{% load tags %} {# the name of the file #}
+
+{% block page_title %} Homepage{% endblock %}
+{% block page_content %}
+<div>
+    Original: {{ values }}
+</div>
+
+<div>
+    Odd: {{ values|odd }} {# odd is the name of the function #}
+</div>
+
+{% student_info student=student %}
+
+<h1>
+    {{ title|upper }} : {{ value|add:'10000000000' }}
+</h1>
+
+{{ info.address }}
+{{ student.get_info }}
+
+<div>
+    {% if students %}
+        {{ students|join:', ' }}
+    {% else %}
+        No students
+    {% endif %}
+</div>
+
+<h2>{{ now|date:'yyy/mmm/ddd' }}</h2>
+<h2>{{ now|app_style }}</h2>
+{% endblock %}
