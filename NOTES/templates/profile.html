@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <div class="body">
+        <!--headings-->
+        <h1>Your Profile</h1>
+        <!--end headings-->
+
+        <!--profile details container TODO-->
+        <div class="note-container">
+            <h2>
+                {{ profile.first_name }} {{ profile.last_name }}
+                <img src="{{ profile.image_url }}"/>
+            </h2>
+            <p>Age: {{ profile.age }}</p>
+            <div>
+                <p>All notes: {{ all_notes }}</p>
+            </div>
+
+            <div class="right">
+                <a class="button delete" href="{% url 'home page' %}">Delete</a>
+
+            </div>
+
+        </div>
+        <!--end profile details container-->
+    </div>
+{% endblock %}

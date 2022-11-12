@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <body>
+    <div id="box">
+        <header>
+
+            <!-- navigation bar-->
+            <h1><a class="home" href="{% url 'home page' %}">GamesPlay</a></h1>
+            <nav>
+                <a href="{% url 'dashboard page' %}">Dashboard</a>
+                <a href="{% url 'create game page' %}">Create Game</a>
+                <a href="{% url 'details profile page' %}">Profile</a>
+            </nav>
+        </header>
+
+            <!-- details section -->
+            <section id="game-details">
+            <h1>Game Details</h1>
+            <div class="info-section">
+            <div class="game-header">
+                <!-- game image -->
+                <img class="game-img"
+                     src="{{ game.image_url }}"
+                     alt='game image'/>
+                <!-- title and rating -->
+                <h1>UNO <span class="levels">Rating: {{ game.rating }}</span></h1>
+                <!-- game category -->
+                <p><span class="type">Category: {{ game.category }}</span></p>
+                <!-- game max level (if any) -->
+                <p><span class="type">Max Level: {{ game.max_level }}</span></p>
+            </div>
+            <!-- game summary (if any)-->
+            <p class="text">
+                {{ game.summary }}
+            </p>
+
+        <!-- Edit/Delete buttons -->
+        <div class="buttons">
+            <a href="{% url 'edit game page' game.id %}" class="button">Edit</a>
+            <a href="{% url 'delete game page' game.id %}" class="button">Delete</a>
+        </div>
+        </div>
+        </section>
+    </div>
+{% endblock %}

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        form .helptext{
+            font-size: 0.7em;
+        }
+    </style>
+</head>
+<body>
+<h1>
+    {% if name %}
+        Hello,{{ name }}! Nice to see you!
+    {% else %}
+        Please, enter your name!
+    {% endif %}
+</h1>
+
+<form method="post" action="{% url 'index' %}">
+    {{ form.as_div }}
+    {% csrf_token %}
+    <button>Send from</button>
+    </form>
+</body>
+</html>

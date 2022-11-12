@@ -1,0 +1,38 @@
+{% extends 'common/base.html' %}
+{% block content %}
+    <body>
+    <div id="container">
+        <header id="site-header">
+
+            <!-- Navigation -->
+            <nav class="navbar">
+                <section class="navbar-dashboard">
+                    <a href="{% url 'home page' %}">Dashboard</a>
+                    <div id="user">
+                        <span>Welcome, {{ profile.first_name }}</span>
+                        <a class="button" href="{% url 'add book page' %}">Add Book</a>
+                        <a class="button" href="{% url 'profile page' %}">Profile</a>
+                    </div>
+                </section>
+            </nav>
+        </header>
+
+        <!-- Add Book Page -->
+        <section id="create-page" class="create">
+            <form id="create-form" action="" method="POST">
+                <fieldset>
+                    <legend>Add New Book</legend>
+                    {{ form }}
+                    <input class="button submit" type="submit" value="Add Book">
+                    {% csrf_token %}
+                </fieldset>
+            </form>
+        </section>
+
+        <footer id="site-footer">
+            <p>Python Web Basics Retake Exam @SoftUni</p>
+        </footer>
+    </div>
+    </body>
+
+{% endblock %}

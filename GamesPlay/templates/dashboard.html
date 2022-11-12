@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+    <body>
+    <div id="box">
+        <header>
+
+            <!-- navigation bar -->
+            <h1><a class="home" href="{% url 'home page' %}">GamesPlay</a></h1>
+            <nav>
+                <a href="{% url 'dashboard page' %}">Dashboard</a>
+                <a href="{% url 'create game page' %}">Create Game</a>
+                <a href="{% url 'details profile page' %}">Profile</a>
+            </nav>
+        </header>
+        {% if not games %}
+        <!-- Display paragraph: If there are no games-->
+        <p class="no-articles">No games yet</p>
+            {% else %}
+        {% for game in games %}
+        <!-- Display div "game" with information about every game (if any)-->
+        <section id="welcome-world">
+
+            <!-- first game-->
+            <div class="game">
+                <div class="image-wrap">
+                    <!-- game image -->
+                    <img src="{{ game.image_url }}"
+                         alt="{{ game.title }}">
+                </div>
+                <!-- game title -->
+                <h3>{{ game.title }}</h3>
+                <!-- game category-->
+                <h1>{{ game.category }}</h1>
+                <div class="data-buttons">
+                    <!-- game details button -->
+                    <a href="{% url 'details game page' game.id %}" class="btn details-btn">Details</a>
+                </div>
+            </div>
+            {% endfor %}
+    {% endif %}
+        </section>
+    </div>
+{% endblock %}
